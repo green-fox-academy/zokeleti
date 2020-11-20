@@ -1,11 +1,10 @@
 import java.util.Scanner;
-
+// Write a program that asks for 5 integers in a row,
+// then it should print the sum and the average of these numbers like:
+// Sum: 22, Average: 4.4
 public class AverageOfInput {
     public static void main(String[] args) {
-        // Write a program that asks for 5 integers in a row,
-        // then it should print the sum and the average of these numbers like:
-        // Sum: 22, Average: 4.4
-        //Collect the numbers in a list
+
 
         Scanner scanner = new Scanner(System.in);
         int sum = 0;
