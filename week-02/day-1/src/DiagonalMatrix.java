@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 // - Create (dynamically*) a two dimensional array
@@ -16,15 +17,21 @@ public class DiagonalMatrix {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter the size of the diagonal: ");
         int diagonal = scanner.nextInt();
+        int[][] matrix = new int[diagonal][diagonal];
         for (int i = 0; i < diagonal; i++){
             for (int j = 0; j < diagonal; j++){
                 if (i != j){
                     System.out.print(0);
+                    matrix[i][j] = 0;
                 } else {
                     System.out.print(1);
+                    matrix[i][j] = 1;
                 }
             }
             System.out.println();
+
         }
+        System.out.println(Arrays.deepToString(matrix));
+
     }
 }
