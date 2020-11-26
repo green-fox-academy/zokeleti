@@ -18,7 +18,6 @@ public class RainbowBoxFunction {
         g.setColor(color);
         int distFromCentLine = size / 2;
         g.fillRect(WIDTH / 2 - distFromCentLine, HEIGHT / 2 - distFromCentLine, size, size );
-        System.out.println("+1 négyzet");
     }
     public static void mainDraw(Graphics graphics) {
         List<Color> colorList = new ArrayList<>();
@@ -27,9 +26,7 @@ public class RainbowBoxFunction {
         colorList.addAll(Arrays.asList(Color.red, Color.orange, Color.yellow, Color.green, Color.blue, violet, indigo));
         int maxSize = WIDTH;
         int minSize = WIDTH - (WIDTH - 56);
-        int iteration = 0;
         for (Color color : colorList){
-            iteration += 1;
             int size = (int) (Math.random() * (maxSize - minSize)) + minSize;
             maxSize = size - 8;
             if (size <= minSize + 8){
