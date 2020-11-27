@@ -101,6 +101,7 @@ public class FunctionToCenter2 {
         protected void paintComponent(Graphics graphics) {
             super.paintComponent(graphics);
             mainDraw(graphics);
+            repaint();
         }
     }
 }
