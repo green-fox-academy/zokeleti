@@ -20,6 +20,7 @@ public class StarryNight {
             graphics.setColor(new Color(randRGB, randRGB, randRGB));
             graphics.fillRect(randX, randY, 5, 5);
         }
+        
     }
 
     // Don't touch the code below
