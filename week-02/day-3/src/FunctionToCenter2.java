@@ -16,6 +16,7 @@ public class FunctionToCenter2 {
 // where each Integer key has a List which contains the coordinate
 // values for the edge points
     public static Map<Integer,List<Integer>> makeMap(){
+        //x and y starting coordinates on the edges, used as a reference point
         Integer x = 0;
         Integer y = 0;
         Map<Integer, List<Integer>> result = new HashMap<>();
@@ -45,7 +46,6 @@ public class FunctionToCenter2 {
         for (Integer i = 0; i < (Integer) map.size(); i++){
             if (startCoord.equals(map.get(i))){
                 result = i;
-                System.out.println("findStart" + i);
                 break;
             }
         }
@@ -58,7 +58,6 @@ public class FunctionToCenter2 {
         for (int i = start; i < (HEIGHT + WIDTH) * 4 + 1 ; i += 20) {
             result.add(i);
         }
-        System.out.println("Steps: " + result);
         return result;
     }
 // a function that draws a line from a given coordinate to the center of the display
@@ -69,9 +68,8 @@ public class FunctionToCenter2 {
     public static void mainDraw(Graphics graphics) {
         Map<Integer, List<Integer>> myMap = new HashMap<>();
         myMap = makeMap();
-        System.out.println("Mymap size " + myMap.size());
-        Integer startX = 320;
-        Integer startY = 317;
+        Integer startX = 10;
+        Integer startY = 0;
         List<Integer> startCoord = new ArrayList<>(Arrays.asList(startX, startY));
         Integer startStep = findStart(myMap, startCoord);
         List<Integer> steps = getSteps(startStep);
