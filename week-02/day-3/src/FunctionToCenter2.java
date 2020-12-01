@@ -68,8 +68,8 @@ public class FunctionToCenter2 {
     public static void mainDraw(Graphics graphics) {
         Map<Integer, List<Integer>> myMap = new HashMap<>();
         myMap = makeMap();
-        Integer startX = 10;
-        Integer startY = 0;
+        Integer startX = 0;
+        Integer startY = 600;
         List<Integer> startCoord = new ArrayList<>(Arrays.asList(startX, startY));
         Integer startStep = findStart(myMap, startCoord);
         List<Integer> steps = getSteps(startStep);
@@ -80,8 +80,8 @@ public class FunctionToCenter2 {
     }
 
     // Don't touch the code below
-    static int WIDTH = 320;
-    static int HEIGHT = 320;
+    static int WIDTH = 720;
+    static int HEIGHT = 720;
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
@@ -99,7 +99,7 @@ public class FunctionToCenter2 {
         protected void paintComponent(Graphics graphics) {
             super.paintComponent(graphics);
             mainDraw(graphics);
-            repaint();
+            //repaint();
         }
     }
 }
