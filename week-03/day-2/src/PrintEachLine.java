@@ -15,7 +15,7 @@ public class PrintEachLine {
     public static void main(String[] args) {
         List<String> lines = new ArrayList<>();
         try{
-            Path filePath = Paths.get("my-file.txt");
+            Path filePath = Paths.get("bananas");
             lines = Files.readAllLines(filePath);
         } catch (Exception e){
             System.out.println("Unable to read file: my-file.txt");
