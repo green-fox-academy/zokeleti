@@ -12,6 +12,8 @@ import java.util.List;
 
 public class SharpieSet {
     List<Sharpie> sharpies = new ArrayList<>();
+
+
     public int countUsable(){
         int result = 0;
         for (Sharpie sharpie : sharpies){
@@ -29,7 +31,6 @@ public class SharpieSet {
                 toRemove.add(i);
             }
         }
-        Collections.sort(toRemove);
         Collections.reverse(toRemove);
         for(int indexToRemove : toRemove){
             sharpies.remove(indexToRemove);

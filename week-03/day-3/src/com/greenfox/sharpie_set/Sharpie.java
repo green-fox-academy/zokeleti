@@ -8,8 +8,8 @@ it contains a list of Sharpie
 
 public class Sharpie {
     String color;
-    Float width;
-    Float inkAmount = 100F;
+    float width;
+    float inkAmount = 100F;
     public Sharpie(String color, Float width){
         this.color = color;
         this.width = width;
@@ -17,4 +17,5 @@ public class Sharpie {
     public void use(){
         this.inkAmount--;
     }
+    public void use(float amount){this.inkAmount-=amount;}
 }
