@@ -21,6 +21,6 @@ public class Experiment
             result = result + reversedWord;
         }
         return result;
-        // Have at it
+
     }
 }
