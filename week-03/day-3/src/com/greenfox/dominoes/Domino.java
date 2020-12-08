@@ -1,6 +1,5 @@
 package com.greenfox.dominoes;
 
-import java.util.Arrays;
 
 public class Domino {
     private final int left;
