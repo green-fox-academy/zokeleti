@@ -60,6 +60,7 @@ public class FunctionToCenter2 {
         }
         return result;
     }
+
 // a function that draws a line from a given coordinate to the center of the display
     public static void toCenter(List<Integer> coord,  Graphics g){
         g.drawLine(coord.get(0), coord.get(1), WIDTH/2, HEIGHT/2);
@@ -68,13 +69,12 @@ public class FunctionToCenter2 {
     public static void mainDraw(Graphics graphics) {
         Map<Integer, List<Integer>> myMap = new HashMap<>();
         myMap = makeMap();
-        Integer startX = 0;
-        Integer startY = 600;
+        Integer startX = (int) (System.currentTimeMillis()%200)/10 ;
+        Integer startY = 0;
         List<Integer> startCoord = new ArrayList<>(Arrays.asList(startX, startY));
         Integer startStep = findStart(myMap, startCoord);
         List<Integer> steps = getSteps(startStep);
         for (Integer i = 0; i < ((HEIGHT + WIDTH)*2)/20 +1; i++) {
-            System.out.println("Mymap iteration " + i + myMap.get(steps.get(i)));
             toCenter(myMap.get(steps.get(i)), graphics);
         }
     }
@@ -99,7 +99,7 @@ public class FunctionToCenter2 {
         protected void paintComponent(Graphics graphics) {
             super.paintComponent(graphics);
             mainDraw(graphics);
-            //repaint();
+            repaint();
         }
     }
 }

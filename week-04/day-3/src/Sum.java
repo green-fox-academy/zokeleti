@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sum{
+public class Sum {
     public Integer sum(List<Integer> numbersToAdd) throws Exception {
         if (numbersToAdd == null){
             throw new IllegalArgumentException("illegal argument");
