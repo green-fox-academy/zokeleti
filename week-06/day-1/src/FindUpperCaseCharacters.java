@@ -14,9 +14,7 @@ public class FindUpperCaseCharacters {
                 .filter(c -> c.isUpperCase(c))
                 .collect(Collectors.toList());
 
-        for (Character character : upperCharacters){
-            System.out.println(upperCharacters);
-        }
+        upperCharacters.stream().forEach(System.out::println);
     }
 }
 
