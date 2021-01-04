@@ -1,6 +1,5 @@
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.counting;
 
 //Write a Stream Expression to find the frequency of characters in a given string!
 public class CharacterFrequency {
@@ -12,4 +11,3 @@ public class CharacterFrequency {
                 .collect(Collectors.groupingBy(character -> character, Collectors.counting()));
     }
 }
-    //groupingBy(x -> x, counting())
