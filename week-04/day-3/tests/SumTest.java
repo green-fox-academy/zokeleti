@@ -36,8 +36,8 @@ public class SumTest {
     @Test(expected = IllegalArgumentException.class)
     public void testWithNull() throws Exception {
         List<Integer> myList = null;
-        Exception expected = new Exception();
-        assertEquals(expected, sum.sum(myList));
+
+        assertEquals(null, sum.sum(myList));
 
     }
 }
