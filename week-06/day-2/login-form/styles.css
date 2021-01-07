@@ -4,7 +4,7 @@
     box-sizing: border-box;
   }
   
-  body {
+body {
     color: #5D6063;
     background-color: #EAEDF0;
     font-family: "Helvetica", "Arial", sans-serif;
@@ -14,20 +14,56 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
   
-  .account-login-header {
-    text-align: center;
-    background-color: #F6F7F8;
-    border: 1px solid #D6D9DC;
-    border-radius: 3px;
+.form {
+  text-align: center;
+  background-color: #F6F7F8;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
     
-    width: 80%;
-    margin: 40px 0;
-    padding: 50px;
-  }
+  width: 350px;
+  height: 350px;
+  margin: 40px;
+  padding: 50px;
+}
   
-  .account-login-header h1 {
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
+.form h1 {
+  font-size: 20px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+label, input {
+  display: block;
+}
+
+label {
+  text-align: left;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+input {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+input:focus{
+  border: 3px lightgreen;
+}
+.psw {
+  text-align: right;
+  font-size: 12px;
+}
+
+.button{
+  border-radius: 8mm;
+  font-size: 12px;
+  padding: 10px 30px;
+  background-color: rgb(5, 16, 36);
+  color: white;
+}
+
+.buttondiv{
+  text-align: left;
+}

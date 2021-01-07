@@ -1,0 +1,31 @@
+package lionking.demo.controller;
+
+import lionking.demo.model.BankAccount;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Controller
+public class BankAccountController {
+
+    BankAccount bankAccount = new BankAccount("Simba", Double.valueOf(2000), "Lion" , "Zebra");
+    List<BankAccount> accounts = new ArrayList<>();
+
+    public BankAccountController(){
+        accounts.add(new BankAccount("Simba", Double.valueOf(2000), "Lion", "Zebra"));
+        accounts.add(new BankAccount("Pumba", Double.valueOf(2), "Boar", "Zebra"));
+        accounts.add(new BankAccount("Zordon", Double.valueOf(15), "Lion", "Zebra"));
+
+    }
+
+
+    @GetMapping ("/show")
+    public String showAccount(Model model) {
+        model.addAttribute("accounts", accounts);
+
+        return "accounts";
+    }
+}
