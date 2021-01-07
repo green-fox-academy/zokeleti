@@ -28,4 +28,10 @@ public class BankAccountController {
 
         return "accounts";
     }
+
+    @GetMapping("/ception")
+    public String showSimplePage(Model model){
+        model.addAttribute("ception", "\"This is an <em>HTML</em> text. <b>Enjoy yourself!</b>\"");
+        return "ception";
+    }
 }
