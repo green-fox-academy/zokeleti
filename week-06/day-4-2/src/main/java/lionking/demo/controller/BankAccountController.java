@@ -16,14 +16,21 @@ public class BankAccountController {
 
     public BankAccountController(){
         accounts.add(new BankAccount("Simba", Double.valueOf(2000), "Lion", "Zebra"));
-        accounts.add(new BankAccount("Pumba", Double.valueOf(2), "Boar", "Zebra"));
+        accounts.add(new BankAccount("Pumba", Double.valueOf(2), "Boar", "Insects"));
         accounts.add(new BankAccount("Zordon", Double.valueOf(15), "Lion", "Zebra"));
+        accounts.add(new BankAccount("Timon", Double.valueOf(15), "Meercat", "Insects"));
 
     }
 
+    @GetMapping("/show")
+    public String showAccount(Model model){
+        model.addAttribute("bankAccount", bankAccount);
+        return "index";
+    }
 
-    @GetMapping ("/show")
-    public String showAccount(Model model) {
+
+    @GetMapping ("/accounts")
+    public String showAccounts(Model model) {
         model.addAttribute("accounts", accounts);
 
         return "accounts";

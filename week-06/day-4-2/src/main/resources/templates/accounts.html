@@ -5,12 +5,14 @@
     <meta charset="utf-8" />
 </head>
 <body>
-<div>
-    <div th:each="account : ${accounts}">
-        <h1
-                th:text="${account.name} + ' - ' +${#numbers.formatDecimal(account.balance, 0, 'COMMA', 2, 'POINT')} + ' ' + ${account.currency} + ' (' + ${account.animalType} + ') '"
-        ></h1>
-    </div>
-</div>
+<table>
+    <tr th:each="account : ${accounts}">
+        <td th:text="${account.name}"/>
+        <td th:text="${#numbers.formatDecimal(account.balance, 0, 'COMMA', 2, 'POINT')}"/>
+        <td th:text="${account.currency}"/>
+        <td th:text="${account.animalType}"/>
+        <td th:text="${accountStat.index}"/>
+    </tr>
+</table>
 </body>
 </html>
