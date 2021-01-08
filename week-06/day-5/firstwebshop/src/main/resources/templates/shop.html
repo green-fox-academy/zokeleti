@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Webshop</title>
+    <link th:href="@{/styles.css}" rel = "stylesheet" />
+</head>
+<body>
+<div>
+    <header><a th:href=" @{/index}">My shop</a></header>
+</div>
+<div class="ui-button">
+    <form th:action="@{/onlyavailable}" method="get">
+        <button  type="submit" name="onlyavailable" >ONLY AVAILABLE</button>
+    </form>
+    <form th:action="@{/cheapestfirst}" method="get">
+        <button type="submit" name="cheapestfirst" >CHEAPEST FIRST</button>
+    </form>
+    <form th:action="@{/containsnike}" method="">
+        <button type="submit" name="containsnike" value="">CONTAINS NIKE</button>
+    </form>
+    <form action="" method="">
+        <button type="submit" name="onlyavailable" value="">AVERAGE STOCK</button>
+    </form>
+    <form action="" method="">
+        <button type="submit" name="onlyavailable" value="">MOST EXPENSIVE AVAILABLE</button>
+    </form>
+</div>
+<table>
+    <thead>
+        <tr>
+            <td class="npq">Name</td>
+            <td class="desc">Description</td>
+            <td class="npq">Price</td>
+            <td class ="npq">Quantity of stock</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="stockItem : ${shopStock}">
+            <td th:text="${stockItem.name}"></td>
+            <td th:text="${stockItem.description}"></td>
+            <td th:text="${#numbers.formatDecimal(stockItem.price, 0, 'COMMA', 2, 'POINT')}"></td>
+            <td th:text="${stockItem.quantity}"></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -2,11 +2,13 @@ package lionking.demo.model;
 
 public class BankAccount {
 
-    public BankAccount(String name, Double balance, String animalType, String currency) {
+    public BankAccount(String name, Double balance, String animalType, String currency, boolean king, boolean goodGuy) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
         this.currency = currency;
+        this.king = king;
+        this.goodGuy = goodGuy;
 
     }
 
@@ -14,6 +16,24 @@ public class BankAccount {
     private Double balance;
     private String animalType;
     private String currency;
+    private boolean king;
+    private boolean goodGuy;
+
+    public boolean isGoodGuy() {
+        return goodGuy;
+    }
+
+    public void setGoodGuy(boolean goodGuy) {
+        this.goodGuy = goodGuy;
+    }
+
+    public boolean isKing() {
+        return king;
+    }
+
+    public void setKing(boolean king) {
+        this.king = king;
+    }
 
     public String getCurrency() {
         return currency;

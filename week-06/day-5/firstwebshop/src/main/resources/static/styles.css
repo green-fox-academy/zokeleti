@@ -1,0 +1,47 @@
+header {
+    font-size: 60px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid aqua;
+}
+
+a{
+    font-family: Arial;
+    color: aqua;
+    text-decoration: none;
+}
+
+button{
+    font-family: Arial;
+    font-size: 15px;
+    padding: 10px 20px 10px 20px;
+    margin: 0px 5px 15px 5px;
+    color: white;
+    background-color: orange;
+    border-radius: 5mm;
+    outline: none;
+}
+
+thead td{
+    color: red;
+    font-family: Arial;
+    font-size: 20px;
+    background-color: skyblue;
+}
+
+.npq{
+    padding: 20px 40px 20px 40px;
+}
+
+.desc{
+    padding: 20px 100px 20px 100px;
+}
+
+tbody tr{
+    font-family: "Arial Black";
+    font-size: 18px;
+    text-align: center;
+}
+
+form{
+    display: inline-block;
+}

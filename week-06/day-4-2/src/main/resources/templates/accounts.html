@@ -3,15 +3,27 @@
 <head>
     <title>Accounts</title>
     <meta charset="utf-8" />
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
 <table>
-    <tr th:each="account : ${accounts}">
+    <thead>
+        <td>Name</td>
+        <td>Balance</td>
+        <td>Currency</td>
+        <td>Species</td>
+        <td>Account index</td>
+        <td>King</td>
+        <td>Good/Bad</td>
+    </thead>
+    <tr  th:each="account : ${accounts}" th:class="${account.king}? king : ''">
         <td th:text="${account.name}"/>
         <td th:text="${#numbers.formatDecimal(account.balance, 0, 'COMMA', 2, 'POINT')}"/>
         <td th:text="${account.currency}"/>
         <td th:text="${account.animalType}"/>
         <td th:text="${accountStat.index}"/>
+        <td th:text="${account.king} ? 'King' : ''"/>
+        <td th:text="${account.goodGuy} ? 'Good guy' : 'Bad guy'"/>
     </tr>
 </table>
 </body>

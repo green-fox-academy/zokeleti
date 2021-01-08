@@ -11,14 +11,15 @@ import java.util.List;
 @Controller
 public class BankAccountController {
 
-    BankAccount bankAccount = new BankAccount("Simba", Double.valueOf(2000), "Lion" , "Zebra");
+    BankAccount bankAccount = new BankAccount("Simba", Double.valueOf(2000), "Lion" , "Zebra", true, true);
     List<BankAccount> accounts = new ArrayList<>();
 
     public BankAccountController(){
-        accounts.add(new BankAccount("Simba", Double.valueOf(2000), "Lion", "Zebra"));
-        accounts.add(new BankAccount("Pumba", Double.valueOf(2), "Boar", "Insects"));
-        accounts.add(new BankAccount("Zordon", Double.valueOf(15), "Lion", "Zebra"));
-        accounts.add(new BankAccount("Timon", Double.valueOf(15), "Meercat", "Insects"));
+        accounts.add(new BankAccount("Simba", Double.valueOf(2000), "Lion", "Zebras", false, true));
+        accounts.add(new BankAccount("Pumba", Double.valueOf(2), "Boar", "Insects", false, true));
+        accounts.add(new BankAccount("Zordon", Double.valueOf(15), "Lion", "Zebras", false, false));
+        accounts.add(new BankAccount("Timon", Double.valueOf(15), "Meercat", "Insects", false, true));
+        accounts.add(new BankAccount("Mufasa", Double.valueOf(15), "Lion", "Zebras", true, true));
 
     }
 
