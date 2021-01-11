@@ -34,6 +34,6 @@
         <button class="searchbutton" type="submit" >Search</button>
     </form>
 </div>
-<h1 th:text="${average}?: ${mostexpensive.name}"></h1>
+<h1 th:text="${message}?: 'The most expensive item(s) is (are): ' + ${mostexpensive.name}"></h1>
 </body>
 </html>

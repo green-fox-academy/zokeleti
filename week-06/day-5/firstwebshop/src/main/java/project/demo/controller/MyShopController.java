@@ -69,7 +69,7 @@ public class MyShopController {
                 .mapToDouble(ShopItem::getQuantity)
                 .average()
                 .orElse(0);
-        model.addAttribute("average", averageStock);
+        model.addAttribute("message", "Average stock quantity is: " + averageStock);
         return "average";
     }
 
@@ -89,6 +89,10 @@ public class MyShopController {
                 .stream()
                 .filter(i -> i.getName().toLowerCase().contains(lowerSearch) || i.getDescription().toLowerCase().contains(lowerSearch))
                 .collect(Collectors.toList());
+        if (containsTerm.isEmpty()){
+            model.addAttribute("message", "There's no match for the given keyword.");
+            return "average";
+        }
         model.addAttribute("shopStock", containsTerm);
         return "shop";
     }
