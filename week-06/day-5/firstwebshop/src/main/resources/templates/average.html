@@ -26,18 +26,12 @@
         <button type="submit" name="mostexpensive" value="">MOST EXPENSIVE AVAILABLE</button>
     </form>
 </div>
+
 <div>
-    <form action="">
-        <label for="search">Search for:</label>
-        <input type="text" id="search" name="search" placeholder="...something like nike">
-        <button type="submit">Search</button>
-    </form>
-</div>
-<div class="searchbar">
-    <form action="">
-        <label for="search">Search for:</label><br>
-        <input type="text" id="search" name="search">
-        <button type="submit">search</button>
+    <form id="searchform" action="/search"  method="post">
+        <label for="searchterm">Search for:</label><br>
+        <input type="text" id="searchterm" name="searchterm" placeholder="...something like nike">
+        <button class="searchbutton" type="submit" >Search</button>
     </form>
 </div>
 <h1 th:text="${average}?: ${mostexpensive.name}"></h1>

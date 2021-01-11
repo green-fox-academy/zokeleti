@@ -3,6 +3,7 @@ package project.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import project.demo.model.ShopItem;
 import project.demo.model.Stock;
@@ -81,9 +82,9 @@ public class MyShopController {
         model.addAttribute("mostexpensive", mostExpensive);
         return "average";
     }
-    @GetMapping("search")
-    public String search( @RequestParam(value = "searchterm", required = false) String searchTerm, Model model){
-        String lowerSearch = searchTerm.toLowerCase();
+    @PostMapping("/search")
+    public String search( @RequestParam String searchterm, Model model){
+        String lowerSearch = searchterm.toLowerCase().trim();
         List<ShopItem> containsTerm = shopStock.getShopStock()
                 .stream()
                 .filter(i -> i.getName().toLowerCase().contains(lowerSearch) || i.getDescription().toLowerCase().contains(lowerSearch))

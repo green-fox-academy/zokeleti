@@ -28,10 +28,10 @@
     </form>
 </div>
 <div>
-    <form th:action="@{/search}"  action="#" method="get">
-        <label for="search">Search for:</label><br>
-        <input type="text" id="search" name="search" th:value="${searchterm}">
-        <button class="searchbutton" type="submit" value="submit">search</button>
+    <form id="searchform" action="/search"  method="post">
+        <label for="searchterm">Search for:</label><br>
+        <input type="text" id="searchterm" name="searchterm" placeholder="...something like nike">
+        <button class="searchbutton" type="submit" >Search</button>
     </form>
 </div>
 <table>
