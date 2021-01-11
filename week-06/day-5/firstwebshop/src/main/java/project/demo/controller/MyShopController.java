@@ -3,12 +3,15 @@ package project.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import project.demo.model.ShopItem;
 import project.demo.model.Stock;
-
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+
 
 @Controller
 public class MyShopController {
@@ -55,6 +58,37 @@ public class MyShopController {
                 .filter(i -> i.getName().toLowerCase().contains("nike") || i.getDescription().toLowerCase().contains("nike"))
                 .collect(Collectors.toList());
         model.addAttribute("shopStock", containsNike);
+        return "shop";
+    }
+
+    @GetMapping("/average")
+    public String average(Model model){
+        Double averageStock = shopStock.getShopStock()
+                .stream()
+                .mapToDouble(ShopItem::getQuantity)
+                .average()
+                .orElse(0);
+        model.addAttribute("average", averageStock);
+        return "average";
+    }
+
+    @GetMapping("/mostexpensive")
+    public String mostExpensive(Model model){
+        ShopItem mostExpensive = shopStock.getShopStock()
+                .stream()
+                .max(Comparator.comparing(ShopItem::getPrice))
+                .orElseThrow(NoSuchElementException::new);
+        model.addAttribute("mostexpensive", mostExpensive);
+        return "average";
+    }
+    @GetMapping("search")
+    public String search( @RequestParam(value = "searchterm", required = false) String searchTerm, Model model){
+        String lowerSearch = searchTerm.toLowerCase();
+        List<ShopItem> containsTerm = shopStock.getShopStock()
+                .stream()
+                .filter(i -> i.getName().toLowerCase().contains(lowerSearch) || i.getDescription().toLowerCase().contains(lowerSearch))
+                .collect(Collectors.toList());
+        model.addAttribute("shopStock", containsTerm);
         return "shop";
     }
 

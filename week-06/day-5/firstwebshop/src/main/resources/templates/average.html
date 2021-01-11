@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -17,40 +16,30 @@
     <form th:action="@{/cheapestfirst}" method="get">
         <button type="submit" name="cheapestfirst" >CHEAPEST FIRST</button>
     </form>
-    <form th:action="@{/containsnike}" method="get">
+    <form th:action="@{/containsnike}" method="">
         <button type="submit" name="containsnike" value="">CONTAINS NIKE</button>
     </form>
     <form th:action="@{/average}" method="get">
-        <button type="submit" name="averagestock" value="">AVERAGE STOCK</button>
+        <button type="submit" name="average" value="">AVERAGE STOCK</button>
     </form>
     <form th:action="@{/mostexpensive}" method="get">
         <button type="submit" name="mostexpensive" value="">MOST EXPENSIVE AVAILABLE</button>
     </form>
 </div>
 <div>
-    <form th:action="@{/search}"  action="#" method="get">
-        <label for="search">Search for:</label><br>
-        <input type="text" id="search" name="search" th:value="${searchterm}">
-        <button class="searchbutton" type="submit" value="submit">search</button>
+    <form action="">
+        <label for="search">Search for:</label>
+        <input type="text" id="search" name="search" placeholder="...something like nike">
+        <button type="submit">Search</button>
     </form>
 </div>
-<table>
-    <thead>
-        <tr>
-            <td class="npq">Name</td>
-            <td class="desc">Description</td>
-            <td class="npq">Price</td>
-            <td class ="npq">Quantity of stock</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="stockItem : ${shopStock}">
-            <td th:text="${stockItem.name}"></td>
-            <td th:text="${stockItem.description}"></td>
-            <td th:text="${#numbers.formatDecimal(stockItem.price, 0, 'COMMA', 2, 'POINT')}"></td>
-            <td th:text="${stockItem.quantity}"></td>
-        </tr>
-    </tbody>
-</table>
+<div class="searchbar">
+    <form action="">
+        <label for="search">Search for:</label><br>
+        <input type="text" id="search" name="search">
+        <button type="submit">search</button>
+    </form>
+</div>
+<h1 th:text="${average}?: ${mostexpensive.name}"></h1>
 </body>
 </html>

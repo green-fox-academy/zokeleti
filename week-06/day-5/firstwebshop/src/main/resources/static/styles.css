@@ -1,17 +1,26 @@
+body{
+    font-family: Arial;
+    width: 80%;
+    margin: auto;
+}
+
 header {
     font-size: 60px;
     margin-bottom: 30px;
-    border-bottom: 2px solid aqua;
+    border-bottom: 2px solid skyblue;
 }
 
 a{
-    font-family: Arial;
-    color: aqua;
+    color: skyblue;
     text-decoration: none;
 }
 
+input{
+    height: 30px;
+    border-radius: 0.5em;
+}
+
 button{
-    font-family: Arial;
     font-size: 15px;
     padding: 10px 20px 10px 20px;
     margin: 0px 5px 15px 5px;
@@ -21,9 +30,13 @@ button{
     outline: none;
 }
 
+table{
+    width:100%;
+    margin: auto;
+}
+
 thead td{
-    color: red;
-    font-family: Arial;
+    color: orange;
     font-size: 20px;
     background-color: skyblue;
 }
@@ -37,11 +50,15 @@ thead td{
 }
 
 tbody tr{
-    font-family: "Arial Black";
     font-size: 18px;
     text-align: center;
 }
 
 form{
     display: inline-block;
+    margin: auto;
+    font-family: Arial;
+    color: orange;
 }
+
+
