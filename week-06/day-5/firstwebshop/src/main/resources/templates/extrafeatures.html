@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Webshop</title>
+    <link th:href="@{/styles.css}" rel = "stylesheet" />
+</head>
+<body>
+<div>
+    <header><a th:href=" @{/index}">My shop</a></header>
+</div>
+<div class="ui-button">
+    <form th:action="@{/food}" method="get">
+        <button  type="submit" name="food" >FOOD</button>
+    </form>
+    <form th:action="@{/sportaccessories}" method="get">
+        <button type="submit" name="cheapestfirst" >SPORT ACCESSORIES</button>
+    </form>
+    <form th:action="@{/vehicles}" method="get">
+        <button type="submit" name="containsnike" value="">VEHICLES</button>
+    </form>
+    <form th:action="@{/forints}" method="get">
+        <button type="submit" name="originalcurrency" value="">PRICE IN FORINTS</button>
+    </form>
+    <form th:action="@{/euros}" method="get">
+        <button type="submit" name="priceineuros" value="">PRICE IN EUROS</button>
+    </form>
+</div>
+<div>
+    <form id="searchform" action="/searchbyfalue"  method="post">
+        <button class="searchbutton" type="submit" value="above">Above</button>
+        <button class="searchbutton" type="submit" value="below">Below</button>
+        <button class="searchbutton" type="submit" value="exactly">Exactly</button>
+        <label for="searchterm">Filter by price:</label><br>
+        <input type="text" id="searchterm" name="searchterm" placeholder="...something like nike">
+    </form>
+</div>
+<table>
+    <thead>
+    <tr>
+        <td class="name">Name</td>
+        <td class="desc">Description</td>
+        <td class="price">Price</td>
+        <td>Quantity of stock</td>
+    </tr>
+    </thead>
+    <tbody >
+    <tr th:each="stockItem : ${shopStock}">
+        <td th:text="${stockItem.name}"></td>
+        <td th:text="${stockItem.description}"></td>
+        <td class="tablecontent" th:text="${#numbers.formatDecimal(stockItem.price, 0, 'COMMA', 2, 'POINT')}"></td>
+        <td class="tablecontent" th:text="${stockItem.quantity}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -2,17 +2,23 @@ package project.demo.model;
 
 public class ShopItem {
 
-    public ShopItem(String name, String description, Double price, Integer quantity) {
+    public ShopItem(String name, String description, Double price, Integer quantity, String type) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
+        this.type = type;
     }
 
-    String name;
-    String description;
-    Double price;
-    Integer quantity;
+    private String name;
+    private String description;
+    private Double price;
+    private Integer quantity;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
 
     public String getName() {
         return name;

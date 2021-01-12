@@ -40,20 +40,35 @@ table{
     width:100%;
     margin: auto;
 }
-
+.tablecontent{
+    font-size: 25px;
+    text-align: center;
+}
 thead td{
     color: orange;
     font-size: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
     background-color: skyblue;
 }
 
-.npq{
-    padding: 20px 40px 20px 40px;
+.name{
+    width: 200px;
+}
+
+.price{
+    width: 200px;
+}
+
+.quantity{
+    width: 100px;
 }
 
 .desc{
-    padding: 20px 100px 20px 100px;
+    width: 500px;
 }
+
+tr
 
 tbody tr{
     font-size: 18px;
