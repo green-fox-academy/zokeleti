@@ -38,12 +38,12 @@ public class UsefulUtilitiesController {
     }
 
     @PostMapping("/useful/encode")
-    public String encode(Model model){
+    public String encode(Model model, @RequestParam String toEncode){
 
         return "encode";
     }
     @PostMapping("/useful/decode")
-    public String decode(Model model){
+    public String decode(Model model, @RequestParam String toDecode){
 
         return "decode";
     }
