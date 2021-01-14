@@ -6,9 +6,17 @@
 </head>
 <body>
 <li><a th:href="@{/useful/colored}">colored</a></li><br>
-<li><a href="/useful/email?email=is@this.valid" th:href="@{/useful/email}">email</a></li><br>
-<li><a th:href="@{/useful/encode}">encode</a></li><br>
-<li><a  th:href="@{/useful/decode}">decode</a></li><br>
+<li><a th:href="@{/useful/email}">email</a></li><br>
+
+
+<form th:action="@{/useful/encode}" method="get" th:required="false">
+    <label for="toencode"></label>
+    <input type="text" name="toenCode" id="toencode" placeholder="text to decode/encode"/>
+    <input type="number" name="key" id="key" placeholder="key to use" th:required="false"/>
+    <button type="submit" name="action" value="encode">Encode/Decode</button>
+</form>
+<br>
+<span th:text="${codedtext}"></span>
 
 
 </body>

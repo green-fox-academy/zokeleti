@@ -37,15 +37,13 @@ public class UsefulUtilitiesController {
         return "email";
     }
 
-    @PostMapping("/useful/encode")
-    public String encode(Model model, @RequestParam String toEncode){
-
-        return "encode";
+    @GetMapping("/useful/encode")
+    public String ceasar(Model model, @RequestParam String toenCode, @RequestParam Integer key){
+        String coded = utilityService.caesar(toenCode, key);
+        model.addAttribute("codedtext", coded);
+        return "useful";
     }
-    @PostMapping("/useful/decode")
-    public String decode(Model model, @RequestParam String toDecode){
 
-        return "decode";
-    }
+
 
 }
