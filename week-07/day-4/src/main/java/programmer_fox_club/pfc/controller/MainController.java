@@ -11,7 +11,6 @@ import programmer_fox_club.pfc.service.FoxService;
 @Controller
 public class MainController {
 
-    Fox fox = new Fox();
     FoxService foxService = new FoxService();
 
     @GetMapping("/index")
@@ -30,20 +29,23 @@ public class MainController {
     }
 
     @PostMapping("/login")
-    public String postLogin(@RequestParam String name, Model model){
+    public String postLogin(@RequestParam String name){
         foxService.addFox(foxService.findFoxByName(name));
         return "redirect:/index?name="+name;
     }
 
-    @PostMapping("/nutritionstore")
+    @GetMapping("/nutritionstore")
     public String getNutritionStore(@RequestParam String name, Model model){
-        Fox foxy = foxService.findFoxByName(name);
-        model.addAttribute("name", foxy.getName());
-        model.addAttribute("food", foxy.getFood());
-        model.addAttribute("drink", foxy.getDrink());
+        model.addAttribute("name", foxService.findFoxByName(name).getName());
         model.addAttribute("foods", foxService.getFoodList());
         model.addAttribute("drinks", foxService.getDrinkList());
+        return "nutritionstore";
+    }
 
+    @PostMapping("/nutritionstore")
+    public String postNutritionStore(@RequestParam String name, String food, String drink){
+        foxService.findFoxByName(name).setFood(food);
+        foxService.findFoxByName(name).setDrink(drink);
         return "redirect:/index?name="+name;
     }
 

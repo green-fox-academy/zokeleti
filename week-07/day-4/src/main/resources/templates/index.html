@@ -5,18 +5,18 @@
     <meta charset="utf-8" />
 </head>
 <body>
-<li><a th:href="'/index?=' + ${name}" th:action="get">Information</a></li>
-<li><a th:href="'/nutritionstore?=' + ${name}" th:action="post">Nutrition Store</a></li>
-<li><a href="/" th:action="get">Trick Center</a></li>
-<li><a href="/" th:action="get">Action History</a></li>
+    <li><a th:href="'/index?name=' + ${name}" th:action="get">Information</a></li>
+    <li><a th:href="'/nutritionstore?name=' + ${name}" th:action="post">Nutrition Store</a></li>
+    <li><a href="/" th:action="get">Trick Center</a></li>
+    <li><a href="/" th:action="get">Action History</a></li>
 
-<img src="greenfox.png">
-<div>
-    <p th:text="*{food}? ('Hello, this fox is ' + ${name} + '. Currently living on ' + ${food} + ' and ' + ${drink} + '. He knows ' + ${numberoftricks} + ' tricks.') : ''" />
-</div>
-<h1>Known tricks</h1>
-<li><a href="/login" th:action="get">Login</a></li>
-<li><a>code in Java</a></li>
+    <img src="greenfox.png">
+    <div>
+        <p th:text="*{food}? ('Hello, this fox is ' + ${name} + '. Currently living on ' + ${food} + ' and ' + ${drink} + '. He knows ' + ${numberoftricks} + ' tricks.') : ''" />
+    </div>
+    <h1>Known tricks</h1>
+    <li><a href="/login" th:action="get">Login</a></li>
+
 
 
 </body>

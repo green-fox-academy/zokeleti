@@ -21,6 +21,9 @@ public class FoxService {
                 .orElse(new Fox(name));
         return result;
     }
+    public int findFoxIndex(Fox foxToFind){
+        return foxes.indexOf(foxToFind);
+    }
 
     public Boolean addFox(Fox foxToAdd){
         if(!foxes.contains(foxToAdd)) {
@@ -28,6 +31,10 @@ public class FoxService {
             return true;
         }
         return false;
+    }
+
+    public void updateFox(Fox toUpdate, Fox updateWith){
+        foxes.set(foxes.indexOf(toUpdate),updateWith);
     }
 
     public List<String> getFoodList(){
