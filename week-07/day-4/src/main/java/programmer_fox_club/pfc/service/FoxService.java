@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import programmer_fox_club.pfc.model.Drinks;
 import programmer_fox_club.pfc.model.Foods;
 import programmer_fox_club.pfc.model.Fox;
+import programmer_fox_club.pfc.model.Tricks;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,9 +23,6 @@ public class FoxService {
                 .orElse(new Fox(name));
         return result;
     }
-    public int findFoxIndex(Fox foxToFind){
-        return foxes.indexOf(foxToFind);
-    }
 
     public Boolean addFox(Fox foxToAdd){
         if(!foxes.contains(foxToAdd)) {
@@ -33,19 +32,28 @@ public class FoxService {
         return false;
     }
 
-    public void updateFox(Fox toUpdate, Fox updateWith){
-        foxes.set(foxes.indexOf(toUpdate),updateWith);
+    public void addToTrickList(String name, String trick){
+        findFoxByName(name).addToTrick(trick);
     }
 
     public List<String> getFoodList(){
         return Arrays.stream(Foods.values())
                 .map(Enum::toString)
+                .map(String::toLowerCase)
                 .collect(Collectors.toList());
     }
 
     public List<String> getDrinkList(){
         return Arrays.stream(Drinks.values())
                 .map(Enum::toString)
+                .map(String::toLowerCase)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getTrickList(){
+        return Arrays.stream(Tricks.values())
+                .map(Enum::toString)
+                .map(String::toLowerCase)
                 .collect(Collectors.toList());
     }
 }

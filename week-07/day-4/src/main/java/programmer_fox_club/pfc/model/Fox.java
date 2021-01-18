@@ -15,15 +15,18 @@ import java.util.List;
 public class Fox {
 
     private String name;
-    List<String> listOfTricks;
-    String food;
-    String drink;
+    private List<String> listOfTricks;
+    private String food;
+    private String drink;
 
     public Fox(String name){
         this.name = name;
         this.food = "pizza";
         this.drink = "beer";
         this.listOfTricks = new ArrayList<>();
+    }
+    public void addToTrick(String trick){
+        listOfTricks.add(trick);
     }
 
 }

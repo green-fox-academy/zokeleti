@@ -20,6 +20,7 @@ public class MainController {
         model.addAttribute("food", foxy.getFood());
         model.addAttribute("drink", foxy.getDrink());
         model.addAttribute("numberoftricks", foxy.getListOfTricks().size());
+        model.addAttribute("tricks", foxy.getListOfTricks());
         return "index";
     }
 
@@ -36,7 +37,7 @@ public class MainController {
 
     @GetMapping("/nutritionstore")
     public String getNutritionStore(@RequestParam String name, Model model){
-        model.addAttribute("name", foxService.findFoxByName(name).getName());
+        model.addAttribute("name", name);
         model.addAttribute("foods", foxService.getFoodList());
         model.addAttribute("drinks", foxService.getDrinkList());
         return "nutritionstore";
@@ -48,5 +49,18 @@ public class MainController {
         foxService.findFoxByName(name).setDrink(drink);
         return "redirect:/index?name="+name;
     }
+
+    /*@GetMapping("/trickcenter")
+    public String getTrickStore(@RequestParam String name, Model model){
+        model.addAttribute("name", name);
+        model.addAttribute("tricks", foxService.getTrickList());
+        return "trickcenter";
+    }
+
+    @PostMapping("/trickcenter")
+    public String postTrickStore(@RequestParam String name, String trick){
+        foxService.addToTrickList(name, trick);
+        return "redirect:/index?name="+name;
+    }*/
 
 }

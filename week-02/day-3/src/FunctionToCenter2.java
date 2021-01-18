@@ -6,17 +6,9 @@ import java.util.List;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-// Create a function that draws a single line and takes 3 parameters:
-// The x and y coordinates of the line's starting point and the graphics
-// and draws a line from that point to the center of the canvas.
-// Fill the canvas with lines from the edges, every 20 px, to the center.
-
 public class FunctionToCenter2 {
-// create a function that folds out the sides and makes a map
-// where each Integer key has a List which contains the coordinate
-// values for the edge points
+
     public static Map<Integer,List<Integer>> makeMap(){
-        //x and y starting coordinates on the edges, used as a reference point
         Integer x = 0;
         Integer y = 0;
         Map<Integer, List<Integer>> result = new HashMap<>();
@@ -39,8 +31,7 @@ public class FunctionToCenter2 {
         }
         return result;
     }
-// create a function which finds the start key on the map created above
-// based on the coordinates set as start coordinates
+
     public static Integer findStart(Map map, List startCoord){
         Integer result = 0;
         for (Integer i = 0; i < (Integer) map.size(); i++){
@@ -51,8 +42,7 @@ public class FunctionToCenter2 {
         }
         return result;
     }
-// create a function that creates a list which will contain the keys of the map we will use
-// as starting points on the edges
+
     public static List<Integer> getSteps(Integer start) {
         List<Integer> result = new ArrayList<>();
         for (int i = start; i < (HEIGHT + WIDTH) * 4 + 1 ; i += 20) {
@@ -61,13 +51,11 @@ public class FunctionToCenter2 {
         return result;
     }
 
-// a function that draws a line from a given coordinate to the center of the display
     public static void toCenter(List<Integer> coord,  Graphics g){
         g.drawLine(coord.get(0), coord.get(1), WIDTH/2, HEIGHT/2);
     }
-// main function which calls the above functions in the correct order
     public static void mainDraw(Graphics graphics) {
-        Map<Integer, List<Integer>> myMap = new HashMap<>();
+        Map<Integer, List<Integer>> myMap;
         myMap = makeMap();
         Integer startX = (int) (System.currentTimeMillis()%200)/10 ;
         Integer startY = 0;
@@ -79,7 +67,7 @@ public class FunctionToCenter2 {
         }
     }
 
-    // Don't touch the code below
+
     static int WIDTH = 720;
     static int HEIGHT = 720;
 
