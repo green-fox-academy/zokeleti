@@ -11,6 +11,7 @@ import todospringsqlexercise.todo.model.Todo;
 import todospringsqlexercise.todo.repository.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller("/todo")
@@ -52,11 +53,33 @@ public class TodoController {
         return "redirect:/";
     }
 
-    /*@GetMapping("/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String getEdit(@PathVariable Long id, Model model){
-        model.addAttribute()
-        return "edit";
-    }*/
+        Todo todo;
+        if(todoRepository.existsById(id)){
+            todo = todoRepository.findById(id).get();
+            model.addAttribute("title", todo.getTitle());
+            model.addAttribute("urgent", todo.isUrgent());
+            model.addAttribute("done", todo.isDone());
+            return "edit";
+        }
+        return "redirect:/";
+
+    }
+
+    @PostMapping("/edit/{id}")
+    public String postEdit(@PathVariable Long id, String title, Boolean urgent, Boolean done){
+        Optional<Todo> optTodo= todoRepository.findById(id);
+        Todo todo = new Todo() ;
+        if(optTodo.isPresent()){
+            todo = optTodo.get();
+        }
+        todo.setTitle(title);
+        todo.setDone(done);
+        todo.setUrgent(urgent);
+        todoRepository.save(todo);
+        return "redirect:/";
+    }
 
 
 
