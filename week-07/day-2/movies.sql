@@ -40,9 +40,16 @@ Also, sort the data, first by reviewer name, then by movie title,
  and gave it a higher rating the second time, return the reviewer’s 
  name and the title of the movie.*/
  
- select re.name, m.title from
- reviewer re left join rating ra on re.rid=ra.rid left join rating ra2 on ra.rid=ra2.rid
- left join movie m on m.mid=ra2.mid where ra.mid = ra2.mid and ra.ratingdate > ra2.ratingdate
+ select re.name, m.title 
+ from reviewer re 
+ left join rating ra 
+ on re.rid=ra.rid 
+ left join rating ra2 
+ on ra.rid=ra2.rid
+ left join movie m 
+ on m.mid=ra2.mid 
+ where ra.mid = ra2.mid 
+ and ra.ratingdate > ra2.ratingdate
  and ra.stars > ra2.stars;
  
  /*For each movie that has at least one rating, find the highest 
