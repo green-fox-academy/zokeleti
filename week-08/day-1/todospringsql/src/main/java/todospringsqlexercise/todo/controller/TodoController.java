@@ -3,10 +3,7 @@ package todospringsqlexercise.todo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import todospringsqlexercise.todo.model.Todo;
 import todospringsqlexercise.todo.repository.Repository;
 
@@ -55,31 +52,24 @@ public class TodoController {
 
     @GetMapping("/edit/{id}")
     public String getEdit(@PathVariable Long id, Model model){
-        Todo todo;
-        if(todoRepository.existsById(id)){
-            todo = todoRepository.findById(id).get();
-            model.addAttribute("title", todo.getTitle());
-            model.addAttribute("urgent", todo.isUrgent());
-            model.addAttribute("done", todo.isDone());
-            return "edit";
-        }
-        return "redirect:/";
-
+        Optional<Todo> todo = todoRepository.findById(id);
+        model.addAttribute("title", todo.get());
+        return "edit";
     }
 
+
+
     @PostMapping("/edit/{id}")
-    public String postEdit(@PathVariable Long id, String title, Boolean urgent, Boolean done){
+    public String postEdit(@PathVariable Long id, @ModelAttribute Todo todo){
         Optional<Todo> optTodo= todoRepository.findById(id);
-        Todo todo = new Todo() ;
-        if(urgent==null){urgent = false;}
-        if(done==null){done = false;}
         if(optTodo.isPresent()){
-            todo = optTodo.get();
+            Todo updatedTodo = optTodo.get();
+            updatedTodo.setUrgent(todo.isUrgent());
+            updatedTodo.setDone(todo.isDone());
+            updatedTodo.setTitle(todo.getTitle());
+            todoRepository.save(updatedTodo);
+            return "redirect:/";
         }
-        todo.setTitle(title);
-        todo.setDone(done);
-        todo.setUrgent(urgent);
-        todoRepository.save(todo);
         return "redirect:/";
     }
 
