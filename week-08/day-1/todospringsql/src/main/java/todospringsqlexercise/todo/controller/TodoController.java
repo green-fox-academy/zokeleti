@@ -71,6 +71,8 @@ public class TodoController {
     public String postEdit(@PathVariable Long id, String title, Boolean urgent, Boolean done){
         Optional<Todo> optTodo= todoRepository.findById(id);
         Todo todo = new Todo() ;
+        if(urgent==null){urgent = false;}
+        if(done==null){done = false;}
         if(optTodo.isPresent()){
             todo = optTodo.get();
         }
