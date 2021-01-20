@@ -52,24 +52,20 @@ public class TodoController {
 
     @GetMapping("/edit/{id}")
     public String getEdit(@PathVariable Long id, Model model){
-        Optional<Todo> todo = todoRepository.findById(id);
-        model.addAttribute("title", todo.get());
-        return "edit";
+        if(todoRepository.existsById(id)){
+            Todo todo = todoRepository.findById(id).get();
+            model.addAttribute("id", todo.getId());
+            model.addAttribute("title", todo.getTitle());
+            model.addAttribute("urgent", todo.isUrgent());
+            model.addAttribute("done", todo.isDone());
+            return "edit";
+        }
+        return "redirect:/";
     }
-
-
 
     @PostMapping("/edit/{id}")
     public String postEdit(@PathVariable Long id, @ModelAttribute Todo todo){
-        Optional<Todo> optTodo= todoRepository.findById(id);
-        if(optTodo.isPresent()){
-            Todo updatedTodo = optTodo.get();
-            updatedTodo.setUrgent(todo.isUrgent());
-            updatedTodo.setDone(todo.isDone());
-            updatedTodo.setTitle(todo.getTitle());
-            todoRepository.save(updatedTodo);
-            return "redirect:/";
-        }
+        todoRepository.save(todo);
         return "redirect:/";
     }
 
