@@ -8,6 +8,9 @@
     <a href="/create">Submit new post</a>
     <br>
     <h1>Trending posts</h1>
+    <a href="/lastpage"><</a>
+    <a th:text="${currentpage}"></a>
+    <a href="/nextpage">></a>
     <table>
         <tbody>
             <tr th:each="post: ${posts}">

@@ -25,7 +25,7 @@ public class PostController {
 
     @GetMapping("/")
     public String postIndex(Model model){
-        model.addAttribute("posts", postRepository.findAll());
+        model.addAttribute("posts", service.paginate(service.currentpage));
         return "index";
     }
 
@@ -51,4 +51,7 @@ public class PostController {
         service.downVote(id);
         return "redirect:/";
     }
+
+    @GetMapping("/nextpage")
+    public String nextPage
 }
