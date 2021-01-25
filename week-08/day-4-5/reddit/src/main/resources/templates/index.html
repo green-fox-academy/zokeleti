@@ -8,18 +8,32 @@
     <a href="/create">Submit new post</a>
     <br>
     <h1>Trending posts</h1>
-    <a href="/lastpage"><</a>
-    <a th:text="${currentpage}"></a>
     <a href="/nextpage">></a>
-    <table>
-        <tbody>
-            <tr th:each="post: ${posts}">
-                <td th:text="${post.votes}"></td>
-                <td><a th:href="'/upvote/' + ${post.id}">+</a></td>
-                <td><a th:href="'/downvote/' + ${post.id}">-</a></td>
-                <td><a href="#" th:text="${post.title}"></a></td>
-        </tbody>
-    </table>
+    <div>
+        <table>
+            <tbody>
+                <tr th:each="post: ${posts}">
+                    <td th:text="${post.votes}"></td>
+                    <td><a th:href="'/upvote/' + ${post.id}">+</a></td>
+                    <td><a th:href="'/downvote/' + ${post.id}">-</a></td>
+                    <td><a href="#" th:text="${post.title}"></a></td>
+                    <td th:text="${post.getCreationDate()}"></td>
+            </tbody>
+        </table>
+    </div>
+    <div th:text="'Total posts: ' + ${totalPosts} + ' - Page ' + ${currentPage} + ' of ' + ${totalPages}">
+
+    </div>
+    <div>
+        <span>
+            <a href="/previouspage"><</a>
+            <span th:each="page: ${#numbers.sequence(1, totalPages)}">
+                <a th:href="@{/{pagenumber}(pagenumber=${page})}" th:text="${page}"></a>
+                <a th:text="${currentpage}"></a>
+            </span>
+            <a href="/nextpage">></a>
+        </span>
+    </div>
 
 </body>
 </html>

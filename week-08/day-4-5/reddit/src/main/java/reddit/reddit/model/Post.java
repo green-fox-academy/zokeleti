@@ -5,10 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 @Entity
 @Getter
@@ -18,13 +17,19 @@ import javax.persistence.Id;
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long Id;
     String title;
     String url;
     Integer votes = 0;
+    static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Timestamp creationDate = new Timestamp(System.currentTimeMillis());
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    User user;
 
-
-
+    public String getCreationDate() {
+        return formatter.format(creationDate);
+    }
 }
