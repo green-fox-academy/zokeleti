@@ -94,7 +94,7 @@ public class MainRestController {
     @GetMapping("/log")
     public Entries getEntries(){
         logService.saveLog("/log", "");
-        List<Log> logs =logService.listAll();
+        List<Log> logs = logService.listAll();
         return new Entries(logs);
     }
 
