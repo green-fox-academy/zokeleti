@@ -1,9 +1,7 @@
 package com.groot.controller;
 
-import com.groot.model.Ship;
+import com.groot.model.*;
 import com.groot.model.Error;
-import com.groot.model.SpeedCalculator;
-import com.groot.model.Translation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +37,12 @@ public class GuardianController {
     @GetMapping("/rocket")
     public ResponseEntity<Ship> getCargo(){
         return ResponseEntity.ok(ship);
+    }
+
+    @GetMapping("/rocket/fill")
+    public ResponseEntity<?> fillShip(@RequestParam (required = false) String caliber, @RequestParam(required = false) Integer amount){
+        ship.fillShip(caliber, amount);
+        return ResponseEntity.ok(new Status(ship, caliber, amount));
     }
 
 }
