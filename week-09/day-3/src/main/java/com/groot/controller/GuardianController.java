@@ -2,6 +2,7 @@ package com.groot.controller;
 
 import com.groot.model.*;
 import com.groot.model.Error;
+import com.groot.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class GuardianController {
 
     private Ship ship;
-
+    //private FoodService foodService;
     @Autowired
-    public GuardianController(){
+
+    public GuardianController(/*FoodService foodService*/){
+        //this.foodService = foodService;
         this.ship = new Ship();
     }
 
@@ -49,7 +52,10 @@ public class GuardianController {
         return ResponseEntity.ok(new Status(ship, caliber, amount));
     }
 
-    //@GetMapping("/dra")
+    /*@GetMapping("/drax")
+    public ResponseEntity<?> getCalorieTable(){
+        return ResponseEntity.ok(foodService.getListOfFoods());
+    }*/
 
 
 
