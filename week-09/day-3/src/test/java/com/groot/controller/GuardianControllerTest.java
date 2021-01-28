@@ -73,4 +73,73 @@ public class GuardianControllerTest {
                 .andExpect(jsonPath("$.speed", is(10.0)));
     }
 
+    @Test
+    public void rocketEndpointHappyCase() throws Exception{
+        mockMvc.perform(get("/rocket"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.caliber25", is(0)))
+                .andExpect(jsonPath("$.caliber30", is(0)))
+                .andExpect(jsonPath("$.caliber50", is(0)))
+                .andExpect(jsonPath("$.ready", is(false)))
+                .andExpect(jsonPath("$.shipstatus", is("empty")));
+    }
+
+    @Test
+    public void fillEndpointFillSomeStuff() throws Exception{
+        mockMvc.perform(post("/rocket/fill")
+                .param("caliber", ".25")
+                .param("amount", "5000"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.received", is(".25")))
+                .andExpect(jsonPath("$.amount", is(5000)))
+                .andExpect(jsonPath("$.ready", is(false)))
+                .andExpect(jsonPath("$.shipstatus", is("40%")));
+    }
+
+    @Test
+    public void fillEndpointFillZeroStuff() throws Exception{
+        mockMvc.perform(post("/rocket/fill")
+                .param("caliber", ".25")
+                .param("amount", "0"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.received", is(".25")))
+                .andExpect(jsonPath("$.amount", is(0)))
+                .andExpect(jsonPath("$.ready", is(false)))
+                .andExpect(jsonPath("$.shipstatus", is("empty")));
+    }
+
+    @Test
+    public void fillEndpointFillToFull() throws Exception{
+        mockMvc.perform(post("/rocket/fill")
+                .param("caliber", ".25")
+                .param("amount", "12500"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.received", is(".25")))
+                .andExpect(jsonPath("$.amount", is(12500)))
+                .andExpect(jsonPath("$.ready", is(true)))
+                .andExpect(jsonPath("$.shipstatus", is("full")));
+    }
+
+    @Test
+    public void fillEndpointFillMoreThanFull() throws Exception{
+        mockMvc.perform(post("/rocket/fill")
+                .param("caliber", ".25")
+                .param("amount", "12600"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.received", is(".25")))
+                .andExpect(jsonPath("$.amount", is(12600)))
+                .andExpect(jsonPath("$.ready", is(false)))
+                .andExpect(jsonPath("$.shipstatus", is("overloaded")));
+    }
+
+    @Test
+    public void fillEndpointWithErrorMessage() throws Exception{
+        mockMvc.perform(post("/rocket/fill"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error", is("I am Groot!")));
+    }
+
 }
+    /*
+        That without giving a parameter the status is not ok,
+        and the given error response is the same as expected*/

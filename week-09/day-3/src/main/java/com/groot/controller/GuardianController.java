@@ -5,6 +5,7 @@ import com.groot.model.Error;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,10 +40,17 @@ public class GuardianController {
         return ResponseEntity.ok(ship);
     }
 
-    @GetMapping("/rocket/fill")
+    @PostMapping("/rocket/fill")
     public ResponseEntity<?> fillShip(@RequestParam (required = false) String caliber, @RequestParam(required = false) Integer amount){
+        if(caliber == null || amount == null){
+            return ResponseEntity.badRequest().body(new Error());
+        }
         ship.fillShip(caliber, amount);
         return ResponseEntity.ok(new Status(ship, caliber, amount));
     }
+
+    //@GetMapping("/dra")
+
+
 
 }

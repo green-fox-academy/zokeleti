@@ -91,6 +91,8 @@ public class Ship {
         } else if (allAmount>12500){
             ready = false;
             shipStatus = "overloaded";
+        } else if (allAmount == 0){
+            shipStatus = "empty";
         }
     }
 }
