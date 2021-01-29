@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FoodService {
@@ -25,14 +26,25 @@ public class FoodService {
         repo.save(food);
     }
 
-    public void removeFood(Food food){
-        repo.delete(food);
+    public void removeFood(String name){
+        Optional<Food> food = repo.findByName(name);
+        if(food.isPresent()){
+            Food foodToDelete = food.get();
+            repo.delete(foodToDelete);
+        }
+
+
     }
 
-    public void changeAmount(Food food, Integer amount){
-        Food foodToUpdate = repo.findById(food.getId()).get();
-        foodToUpdate.setAmount(amount);
-        repo.save(foodToUpdate);
+    public void changeAmount(String name, Integer amount){
+        Optional<Food> food = repo.findByName(name);
+        if (food.isPresent()){
+            Food foodToUpdate = food.get();
+            foodToUpdate.setAmount(amount);
+            repo.save(foodToUpdate);
+        }
+
+
     }
 
 

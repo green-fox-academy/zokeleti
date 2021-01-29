@@ -140,6 +140,3 @@ public class GuardianControllerTest {
     }
 
 }
-    /*
-        That without giving a parameter the status is not ok,
-        and the given error response is the same as expected*/
