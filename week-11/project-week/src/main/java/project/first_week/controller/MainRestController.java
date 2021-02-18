@@ -32,7 +32,7 @@ public class MainRestController {
     @Autowired
     private MainService mainService;
 
-    
+
 
     @GetMapping("/api/genres")
     public ResponseEntity<List<Genre>> getGenres(@RequestParam String apiKey){
